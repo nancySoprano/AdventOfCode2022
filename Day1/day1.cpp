@@ -5,8 +5,12 @@
 #include <cstdlib>
 #include <sstream>
 #include <numeric>
+#include <algorithm>
+
 
 using namespace std;
+
+
 
 int main() {
     cout << "day1" << endl;
@@ -42,8 +46,18 @@ int main() {
         total += kcalPacks[i];
     }
 
+
+    /* PART 2*/
+    vector<int> sorted;
+    sort(totalKcalPacks.begin(),totalKcalPacks.end(), greater<int>());
+    int top3total;
+    for (int i=0; i<3; ++i){
+        cout << i+1 << ". "<< totalKcalPacks[i] << endl;
+        top3total += totalKcalPacks[i];
+    }
+
     cout << "Day 1 Part 1: Calories count of the richest pack is: " << *max_element (begin(totalKcalPacks), end(totalKcalPacks)) << endl;
-    
+    cout << "Top 3 Elves are carrying: " << top3total-1 << " kcalories in total." << endl;
     input.close();
     cout << "end of file" <<endl;
 
